@@ -6,11 +6,11 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 13:56:57 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/27 15:44:22 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/28 19:54:16 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../inc/philo.h"
 
 int	main(int ac, char **av)
 {
@@ -20,5 +20,6 @@ int	main(int ac, char **av)
 	if (ac != 5 && ac != 6)
 		error_exit("Wrong number of arguments!", data);
 	parsing(ac, av, data);
-	init_data(data);
+	init(data);
+	start_threads(data);
 }

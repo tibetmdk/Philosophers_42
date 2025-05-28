@@ -6,15 +6,33 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 15:44:36 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/27 16:22:19 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/28 16:14:21 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../inc/philo.h"
+
+static void	init_philos(t_data *data)
+{
+	int		i;
+
+	i = 0;
+	while (i < data->philo_number)
+	{
+		data->philos[i].id = i + 1;
+		data->philos[i].is_philo_full = FALSE;
+		data->philos[i].meal_count = 0;
+		data->philos[i].data = data;
+		data->philos[i].right_fork = &data->forks[(i + 1) % data->philo_number];
+		data->philos[i].left_fork = &data->forks[i];
+		i++;
+	}
+}
 
 void	init(t_data *data)
 {
-	int	i;
+	int		i;
+
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->philo_number);
 	if (!data->philos)
 		error_exit("Problem in malloc!", data);
@@ -33,4 +51,5 @@ void	init(t_data *data)
 			error_exit("Fork mutex init failed!", data);
 		data->forks[i].fork_id = i;
 	}
+	init_philos(data);
 }

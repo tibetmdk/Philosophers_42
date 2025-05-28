@@ -6,11 +6,11 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:05:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/27 15:19:01 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/28 16:45:02 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../inc/philo.h"
 
 static int	is_digit(char c)
 {
@@ -26,7 +26,7 @@ static int	is_space(char c)
 	return (0);
 }
 
-static long	ft_atol(char *str)
+static long	ft_atol(char *str, t_data *data)
 {
 	int		i;
 	long	result;
@@ -36,44 +36,35 @@ static long	ft_atol(char *str)
 	while (is_space(str[i]))
 		i++;
 	if (str[i] == '-')
-		return (-1);
+		error_exit("An error occurred in tf_atol", data);
 	if (str[i] == '+')
 		i++;
 	if (!is_digit(str[i]))
-		return (-1);
+		error_exit("An error occurred in tf_atol", data);
 	while (!is_space(str[i]) && str[i] != '\0')
 	{
 		if (!is_digit(str[i]))
-			return (-1);
+			error_exit("An error occurred in tf_atol", data);
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
 	if (result > INT_MAX)
-		return (-1);
-	else
-		return (result);
+		error_exit("An error occurred in tf_atol", data);
+	return (result);
 }
 
 void	parsing(int ac, char **av, t_data *data)
 {
-	data->philo_number = ft_atol(av[1]);
-	if (data->philo_number == -1)
-		error_exit("Wrong input", data);
-	data->time_to_die = ft_atol(av[2]);
-	if (data->time_to_die == -1 || data->time_to_die < 60)
-		error_exit("Wrong input", data);
-	data->time_to_eat = ft_atol(av[3]);
-	if (data->time_to_eat == -1 || data->time_to_die < 60)
-		error_exit("Wrong input", data);
-	data->time_to_sleep = ft_atol(av[4]);
-	if (data->time_to_sleep == -1 || data->time_to_die < 60)
-		error_exit("Wrong input", data);
-	if (ac = 6)
-	{
-		data->limit_of_meals = ft_atol(ft_atol(av[5]));
-		if (data->limit_of_meals == -1)
-			error_exit("Wrong input", data);
-	}	
+	data->philo_number = ft_atol(av[1], data);
+	data->time_to_die = ft_atol(av[2], data);
+	if (data->time_to_die < 60)
+		error_exit("You can't give a time smaller than 60 ms", data);
+	data->time_to_eat = ft_atol(av[3], data);
+	if (data->time_to_eat < 60)
+		error_exit("You can't give a time smaller than 60 ms", data);
+	data->time_to_sleep = ft_atol(av[4], data);
+	if (data->time_to_sleep < 60)
+		error_exit("You can't give a time smaller than 60 ms", data);
+	if (ac == 6)
+		data->limit_of_meals = ft_atol(av[5], data);
 }
-
-
