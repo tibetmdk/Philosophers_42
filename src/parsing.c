@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:05:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/28 16:45:02 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/29 18:05:28 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ void	parsing(int ac, char **av, t_data *data)
 		error_exit("You can't give a time smaller than 60 ms", data);
 	if (ac == 6)
 		data->limit_of_meals = ft_atol(av[5], data);
+	else
+		data->limit_of_meals = 0;
+	
 }

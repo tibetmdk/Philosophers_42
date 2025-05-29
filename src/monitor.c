@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:03:33 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/28 20:23:04 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/29 18:46:55 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_death(t_data *data)
 			data->simulation_finished = 1;
 			pthread_mutex_unlock(&data->data_mutex);
 			pthread_mutex_lock(&data->print_mutex);
-			printf("%llu %d died\n", get_time() - data->start_time, \
+			printf("%lu %d died\n", get_time() - data->start_time, \
 			data->philos[i].id);
 			pthread_mutex_unlock(&data->print_mutex);
 			return (1);
@@ -41,12 +41,12 @@ static int	check_full(t_data *data)
 	int	i;
 	int	count;
 
-	i = 0;
+	i = -1;
 	count = 0;
 	if (data->limit_of_meals == 0)
 		return (0);
 	pthread_mutex_lock(&data->data_mutex);
-	while (i < data->philo_number)
+	while (++i < data->philo_number)
 		if (data->philos[i].meal_count >= data->limit_of_meals)
 			count++;
 	if (count == data->philo_number)

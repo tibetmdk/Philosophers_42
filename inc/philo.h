@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:07:37 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/28 19:55:55 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/29 18:02:55 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <sys/time.h>
+# include <stdint.h>
 
 //-- SOME DEFINES --
 # define RED		"\033[0;31m"	// red
