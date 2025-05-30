@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   dinner.c                                           :+:      :+:    :+:   */
@@ -60,7 +60,8 @@ void	*dinner(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	one_philo(philo);
+	if (philo->data->philo_number == 1 )
+		one_philo(philo);
 	if (philo->id % 2 == 0)
 		ft_usleep(philo->data->time_to_eat / 2);
 	while (!is_simulation_finished(philo))
