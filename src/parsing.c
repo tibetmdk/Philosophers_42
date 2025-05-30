@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:05:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/29 18:05:28 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/31 00:19:44 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	parsing(int ac, char **av, t_data *data)
 		data->limit_of_meals = ft_atol(av[5], data);
 	else
 		data->limit_of_meals = 0;
-	
 }

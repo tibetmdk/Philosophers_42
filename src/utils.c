@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:34:26 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/28 19:55:03 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/31 00:27:48 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_usleep(uint64_t ms)
 
 void	error_exit(char *msg, t_data *data)
 {
-	(void)data;
-	printf(RED"%s"RST, msg);
+	printf(RED"%s\n"RST, msg);
+	clean_all(data);
 	exit(EXIT_FAILURE);
 }
 
@@ -52,4 +52,18 @@ void	print_action(t_philo *philo, char *msg)
 	printf("%s%ld %s%d %s%s\n", GREEN, timestamp, \
 	LIGHT_BLUE, philo->id, RST, msg);
 	pthread_mutex_unlock(&philo->data->print_mutex);
+}
+
+void	clean_all(t_data *data)
+{
+	if (data->philos)
+		free(data->philos);
+	if (data->forks)
+		free(data->forks);
+	if (data->data_mtx_initialized)
+		pthread_mutex_destroy(&data->data_mutex);
+	if (data->print_mtx_initialized)
+		pthread_mutex_destroy(&data->print_mutex);
+	if (data)
+		free(data);
 }

@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:07:37 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/29 18:02:55 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/30 23:11:23 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		error_exit(char *msg, t_data *data);
 uint64_t	get_time(void);
 void		ft_usleep(uint64_t ms);
 void		print_action(t_philo *philo, char *msg);
+void		*ft_memset(void *s, int c, int n);
 
 // -- MAIN FUNCTIONS --
 void		parsing(int ac, char **av, t_data *data);
@@ -83,5 +84,6 @@ void		init(t_data *data);
 void		start_threads(t_data *data);
 void		*dinner(void *data);
 void		*monitor(void *arg);
+void		clean_all(t_data *data);
 
 #endif

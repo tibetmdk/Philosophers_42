@@ -7,7 +7,7 @@ NAME = philo
 SRCS =	src/dinner.c src/init.c \
 		src/main.c   src/monitor.c\
 		src/parsing.c src/threads.c \
-		src/utils.c 
+		src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 
