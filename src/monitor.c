@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:03:33 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/31 03:18:14 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/31 03:25:27 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	*monitor(void *arg)
 
 	data = (t_data *)arg;
 	while (!check_death(data) && !check_full(data))
-		usleep(1000);
+		ft_usleep(200);
 	return (NULL);
 }

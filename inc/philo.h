@@ -6,14 +6,13 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:07:37 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/30 23:11:23 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/31 04:09:14 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-//-- LIBRARIES --//
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -22,18 +21,17 @@
 # include <sys/time.h>
 # include <stdint.h>
 
-//-- SOME DEFINES --
-# define RED		"\033[0;31m"	// red
-# define GREEN	"\033[0;32m"	//  green
-# define LIGHT_BLUE	"\033[1;34m"	// light blue 
-# define RST		"\033[0m"	// reset
+# define RED		"\033[0;31m"
+# define GREEN	"\033[0;32m"
+# define LIGHT_BLUE	"\033[1;34m"
+# define RST		"\033[0m"
 
 # define INT_MAX	2147483647
 # define FALSE		0
 # define TRUE		1
 
 typedef pthread_mutex_t	t_mtx;
-//-- Structs --
+
 typedef struct s_data	t_data;
 
 typedef struct s_fork
@@ -71,14 +69,10 @@ struct s_data
 	int				print_mtx_initialized;
 };
 
-// -- UTIL FUNCTIONS --
 void		error_exit(char *msg, t_data *data);
 uint64_t	get_time(void);
 void		ft_usleep(uint64_t ms);
 void		print_action(t_philo *philo, char *msg);
-void		*ft_memset(void *s, int c, int n);
-
-// -- MAIN FUNCTIONS --
 void		parsing(int ac, char **av, t_data *data);
 void		init(t_data *data);
 void		start_threads(t_data *data);

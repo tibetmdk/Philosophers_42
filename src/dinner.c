@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 15:57:43 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/31 00:20:34 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/31 03:22:23 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	one_philo(t_philo *philo)
 
 static int	philo_eat(t_philo *philo)
 {
+	if (philo->data->simulation_finished)
+		return (1);
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(&philo->left_fork->fork);
@@ -76,7 +78,8 @@ void	*dinner(void *data)
 		ft_usleep(philo->data->time_to_eat / 2);
 	while (!is_simulation_finished(philo))
 	{
-		philo_eat(philo);
+		if (philo_eat(philo))
+			break ;
 		if (philo->data->limit_of_meals > 0)
 		{
 			pthread_mutex_lock(&philo->data->data_mutex);
