@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:03:33 by tmidik            #+#    #+#             */
-/*   Updated: 2025/05/29 18:46:55 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/05/31 03:18:14 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	check_death(t_data *data)
 			data->simulation_finished = 1;
 			pthread_mutex_unlock(&data->data_mutex);
 			pthread_mutex_lock(&data->print_mutex);
-			printf("%lu %d died\n", get_time() - data->start_time, \
-			data->philos[i].id);
+			printf("%s%lu %d died\n%s", RED, get_time() - data->start_time, \
+			data->philos[i].id, RST);
 			pthread_mutex_unlock(&data->print_mutex);
 			return (1);
 		}
